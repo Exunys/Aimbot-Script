@@ -9,6 +9,8 @@ Editable settings :
 - Aim Body Part
 - Sensitivity / Aim Speed
 
+This script also has FOV customization, circle color, circle filled, circle thickness, circle radius (fov or size), circle position and how many sides does the circle have (set to 64 for a circle, anything below 3 won't work)
+
 ## Script
 
 Load the script by using the code below or by copying it from [here](https://github.com/UbicastDev/Aimbot-Script/blob/main/Aimbot%20Script).
