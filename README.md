@@ -15,7 +15,7 @@ This script also has FOV customization, circle color, circle filled, circle thic
 
 Load the script by using the code below or by copying it from [here](https://github.com/UbicastDev/Aimbot-Script/blob/main/Aimbot%20Script).
 ```lua
-loadstring(game:HttpGet("https://pastebin.com/raw/gGiSPpcq"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/ygp8Enye"))()
 ```
 
 ## Contact information
