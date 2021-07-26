@@ -5,8 +5,6 @@ local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local LocalPlayer = Players.LocalPlayer
 local Holding = false
-local Locked = false
-local Victim
 
 _G.AimbotEnabled = true
 _G.TeamCheck = false -- If set to true then the script would only lock your aim at enemy team members.
@@ -34,39 +32,37 @@ FOVCircle.Thickness = _G.CircleThickness
 
 local function GetClosestPlayer()
 	local MaximumDistance = _G.CircleRadius
-	local Target
+	local Target = nil
 
-	for _, v in pairs(game.Players:GetPlayers()) do
-        if v.Name ~= LocalPlayer.Name then
-            if _G.TeamCheck == true then 
-                if v.Team ~= LocalPlayer.Team then
-                    if workspace:FindFirstChild(v.Name) ~= nil then
-                        if workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
-                            if workspace[v.Name]:FindFirstChild("Humanoid") ~= nil and workspace[v.Name]:FindFirstChild("Humanoid").Health ~= 0 then
-                                local ScreenPoint = Camera:WorldToScreenPoint(workspace[v.Name]:WaitForChild("HumanoidRootPart", math.huge).Position)
-                                local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
-                                
-                                if VectorDistance < MaximumDistance then
-                                    Target = v
-                                end
-                            end
-                        end
-                    end
-                end
-            else
-                if workspace:FindFirstChild(v.Name) ~= nil then
-                    if workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
-                        if workspace[v.Name]:FindFirstChild("Humanoid") ~= nil and workspace[v.Name]:FindFirstChild("Humanoid").Health ~= 0 then
-                            local ScreenPoint = Camera:WorldToScreenPoint(workspace[v.Name]:WaitForChild("HumanoidRootPart", math.huge).Position)
-                            local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
-                            
-                            if VectorDistance < MaximumDistance then
-                                Target = v
-                            end
-                        end
-                    end
-                end
-            end
+	for _, v in next, game.Players:GetPlayers() do
+		if v.Name ~= LocalPlayer.Name then
+			if _G.TeamCheck == true then
+				if v.Team ~= LocalPlayer.Team then
+					if workspace:FindFirstChild(v.Name) ~= nil then
+						if workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
+							if workspace[v.Name]:FindFirstChild("Humanoid") ~= nil and workspace[v.Name]:FindFirstChild("Humanoid").Health ~= 0 then
+								local ScreenPoint = Camera:WorldToScreenPoint(workspace[v.Name]:WaitForChild("HumanoidRootPart", math.huge).Position)
+								local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+								if VectorDistance < MaximumDistance then
+									Target = v
+								end
+							end
+						end
+					end
+				end
+			else
+				if workspace:FindFirstChild(v.Name) ~= nil then
+					if workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
+						if workspace[v.Name]:FindFirstChild("Humanoid") ~= nil and workspace[v.Name]:FindFirstChild("Humanoid").Health ~= 0 then
+							local ScreenPoint = Camera:WorldToScreenPoint(workspace[v.Name]:WaitForChild("HumanoidRootPart", math.huge).Position)
+							local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+							if VectorDistance < MaximumDistance then
+								Target = v
+							end
+						end
+					end
+				end
+			end
 		end
 	end
 
@@ -82,7 +78,6 @@ end)
 UserInputService.InputEnded:Connect(function(Input)
     if Input.UserInputType == Enum.UserInputType.MouseButton2 then
         Holding = false
-        Locked = false
     end
 end)
 
@@ -98,6 +93,5 @@ RunService.RenderStepped:Connect(function()
     FOVCircle.Thickness = _G.CircleThickness
     if Holding == true and _G.AimbotEnabled == true then
         TweenService:Create(Camera, TweenInfo.new(_G.Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, GetClosestPlayer().Character[_G.AimPart].Position)}):Play()
-        Locked = true
     end
 end)
