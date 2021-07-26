@@ -13,12 +13,12 @@ This script also has FOV customization, circle color, circle filled, circle thic
 
 ## Script
 
-Load the script by using the code below or by copying it from [here](https://github.com/UbicastDev/Aimbot-Script/blob/main/Aimbot%20Script).
+Load the script by using the code below or by copying it from [here](https://github.com/Exunys/Aimbot-Script/blob/main/Aimbot%20Script.lua).
 ```lua
 loadstring(game:HttpGet("https://pastebin.com/raw/ygp8Enye"))()
 ```
 
 ## Contact information
 
-- Discord : [Aleksandar](https://discord.com/users/611111398818316309)
-- ROBLOX : [Ubicast](https://www.roblox.com/users/330279990/profile)
+- Discord : [Exunys](https://discord.com/users/611111398818316309)
+- ROBLOX : [Exunys](https://www.roblox.com/users/330279990/profile)
