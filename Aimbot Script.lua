@@ -34,15 +34,16 @@ local function GetClosestPlayer()
 	local MaximumDistance = _G.CircleRadius
 	local Target = nil
 
-	for _, v in next, game.Players:GetPlayers() do
+	for _, v in next, Players:GetPlayers() do
 		if v.Name ~= LocalPlayer.Name then
 			if _G.TeamCheck == true then
 				if v.Team ~= LocalPlayer.Team then
-					if workspace:FindFirstChild(v.Name) ~= nil then
-						if workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
-							if workspace[v.Name]:FindFirstChild("Humanoid") ~= nil and workspace[v.Name]:FindFirstChild("Humanoid").Health ~= 0 then
-								local ScreenPoint = Camera:WorldToScreenPoint(workspace[v.Name]:WaitForChild("HumanoidRootPart", math.huge).Position)
+					if v.Character ~= nil then
+						if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+							if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+								local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
 								local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+								
 								if VectorDistance < MaximumDistance then
 									Target = v
 								end
@@ -51,11 +52,12 @@ local function GetClosestPlayer()
 					end
 				end
 			else
-				if workspace:FindFirstChild(v.Name) ~= nil then
-					if workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
-						if workspace[v.Name]:FindFirstChild("Humanoid") ~= nil and workspace[v.Name]:FindFirstChild("Humanoid").Health ~= 0 then
-							local ScreenPoint = Camera:WorldToScreenPoint(workspace[v.Name]:WaitForChild("HumanoidRootPart", math.huge).Position)
+				if v.Character ~= nil then
+					if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+						if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+							local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
 							local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+							
 							if VectorDistance < MaximumDistance then
 								Target = v
 							end
@@ -91,6 +93,7 @@ RunService.RenderStepped:Connect(function()
     FOVCircle.Transparency = _G.CircleTransparency
     FOVCircle.NumSides = _G.CircleSides
     FOVCircle.Thickness = _G.CircleThickness
+
     if Holding == true and _G.AimbotEnabled == true then
         TweenService:Create(Camera, TweenInfo.new(_G.Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, GetClosestPlayer().Character[_G.AimPart].Position)}):Play()
     end
