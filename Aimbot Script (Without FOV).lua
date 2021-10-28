@@ -15,9 +15,9 @@ local function GetClosestPlayer()
 	local MaximumDistance = math.huge
 	local Target = nil
   
-  coroutine.wrap(function()
-    wait(20); MaximumDistance = math.huge -- Reset the MaximumDistance so that the Aimbot doesn't remember it as a very small variable and stop capturing players...
-  end)()
+  	coroutine.wrap(function()
+    		wait(20); MaximumDistance = math.huge -- Reset the MaximumDistance so that the Aimbot doesn't remember it as a very small variable and stop capturing players...
+  	end)()
 
 	for _, v in next, Players:GetPlayers() do
 		if v.Name ~= LocalPlayer.Name then
@@ -31,7 +31,7 @@ local function GetClosestPlayer()
 								
 								if VectorDistance < MaximumDistance then
 									Target = v
-                  MaximumDistance = VectorDistance
+                  							MaximumDistance = VectorDistance
 								end
 							end
 						end
@@ -46,7 +46,7 @@ local function GetClosestPlayer()
 							
 							if VectorDistance < MaximumDistance then
 								Target = v
-                MaximumDistance = VectorDistance
+               							MaximumDistance = VectorDistance
 							end
 						end
 					end
