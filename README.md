@@ -24,7 +24,7 @@ _G.Sensitivity = 0 -- How many seconds it takes for the aimbot script to officia
 
 ### Settings (For the script with the FOV Circle)
 
-```
+```lua
 --// FOV Circle
 
 _G.CircleSides = 64 -- How many sides the FOV circle would have.
