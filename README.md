@@ -11,7 +11,7 @@ Editable settings :
 
 This script also has FOV customization, circle color, circle filled, circle thickness, circle radius (fov or size), circle position and how many sides does the circle have (set to 64 for a circle, anything below 3 won't work)
 
-### Settings (For the script with the FOV Circle)
+### Adjustable settings for both of the Scripts
 
 ```lua
 --// Aimbot
@@ -20,7 +20,11 @@ _G.AimbotEnabled = true -- Determines whether or not the Aimbot script will lock
 _G.TeamCheck = false -- If set to true then the script would only lock your aim at enemy team members.
 _G.AimPart = "Head" -- What body part of the closest enemy the aimbot script would lock at.
 _G.Sensitivity = 0 -- How many seconds it takes for the aimbot script to officially lock onto the target's aimpart.
+```
 
+### Settings (For the script with the FOV Circle)
+
+```
 --// FOV Circle
 
 _G.CircleSides = 64 -- How many sides the FOV circle would have.
