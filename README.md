@@ -1,5 +1,15 @@
 # Aimbot Script
 
+## New Version
+
+🔥NEW🔥 - This script is outdated, buggy, unsecure, unorganized and old. Check out the new version [here](https://github.com/Exunys/Aimbot-V2).
+
+- *Note*: I, Exunys, have received a lot of feedback about this Aimbot project and by analyzing that a lot of people use this script, I have decided to rewrite this project entirely and implement my modern system for storing, optimizing and tracking. The new project is the perfect aimbot script with a very simple system. I hopefully have fixed every con about this project in the new script. Please check it out, read the repository's README.md document and use that version instead of this one.
+
+**https://github.com/Exunys/Aimbot-V2**
+
+## Old Version
+
 ### About
 
 This script works on all games (unless the character is not in workspace)
