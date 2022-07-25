@@ -8,7 +8,7 @@ local Holding = false
 
 _G.AimbotEnabled = true
 _G.TeamCheck = false -- If set to true then the script would only lock your aim at enemy team members.
-_G.AimPart = "Head" -- Where the aimbot script would lock at.
+_G.AimPart = "rim" -- Where the aimbot script would lock at.
 _G.Sensitivity = 0 -- How many seconds it takes for the aimbot script to officially lock onto the target's aimpart.
 
 _G.CircleSides = 64 -- How many sides the FOV circle would have.
